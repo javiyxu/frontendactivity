@@ -11,7 +11,7 @@ submit.addEventListener("click", () => {
     let gender = document.querySelector("#gender").value;
     let formData = { fname, lname, email, gender };
 
-    fetch("http://localhost:5000/api/users", {
+    fetch("https://backendactivity-1.onrender.com/api/users", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -31,7 +31,7 @@ window.addEventListener("load", () => {
 function getUsers(){
     let html=""
     //FETCH API
-    fetch('http://localhost:5000/api/users',{mode:'cors'})
+    fetch('https://backendactivity-1.onrender.com/api/users',{mode:'cors'})
     .then(response=>{
         console.log(response);
         return response.json();
@@ -91,7 +91,7 @@ function getUsers(){
 
 function deleteMember(id){
     if(confirm("Are you sure you want to delete this user?")){
-        fetch('http://localhost:5000/api/users',{
+        fetch('https://backendactivity-1.onrender.com/api/users',{
             method: 'DELETE',
             body: JSON.stringify({id}),
             headers:{
@@ -108,7 +108,7 @@ function deleteMember(id){
 }
 
 function searchMember(id){
-   fetch(`http://localhost:5000/api/users/${id}`)
+   fetch(`https://backendactivity-1.onrender.com/api/users${id}`)
   .then(response=> response.json())
   .then(data=>{
     document.querySelector('#fname').value=data[0].first_name;
@@ -134,7 +134,7 @@ update.addEventListener(`click`,()=>{
   let formData = {fname, lname, email, gender, id:ID};
 
   if(confirm("Are you sure you want to update this user?")){
-      fetch(`http://localhost:5000/api/users`,{
+      fetch(`https://backendactivity-1.onrender.com/api/users`,{
         method: 'PUT',
         body: JSON.stringify(formData),
         headers:{
@@ -146,4 +146,5 @@ update.addEventListener(`click`,()=>{
       alert("User Updated Successfully");
       location.reload();
   } 
+
 })

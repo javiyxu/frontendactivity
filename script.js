@@ -5,11 +5,11 @@ const recordCount = document.querySelector("#recordCount");
 
 //POST API
 submit.addEventListener("click", () => {
-document.querySelector('#fname').value = data.first_name;
-document.querySelector('#lname').value = data.last_name;
-document.querySelector('#email').value = data.email;
-document.querySelector('#gender').value = data.gender;
-document.querySelector('#ID').value = data.id;
+  let fname = document.querySelector("#fname").value;
+    let lname = document.querySelector("#lname").value;
+    let email = document.querySelector("#email").value;
+    let gender = document.querySelector("#gender").value;
+    let formData = { fname, lname, email, gender };
     fetch("https://backendactivity-1.onrender.com/api/users", {
         method: "POST",
         body: JSON.stringify(formData),
@@ -133,7 +133,7 @@ update.addEventListener('click', () => {
     if(confirm("Are you sure you want to update this user?")) {
         fetch(`https://backendactivity-1.onrender.com/api/users/${ID}`, {
             method: 'PUT',
-            body: JSON.stringify({ fname, lname, email, gender, id }),
+            body: JSON.stringify({ fname, lname, email, gender, ID }),
             headers: { "Content-Type": "application/json" },
         })
         .then(response => response.json())
@@ -144,6 +144,7 @@ update.addEventListener('click', () => {
         .catch(error => console.log(error));
     }
 });
+
 
 
 

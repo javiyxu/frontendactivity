@@ -131,7 +131,7 @@ update.addEventListener(`click`,()=>{
   let email = document.querySelector("#email").value;
   let gender = document.querySelector("#gender").value;
   let ID = document.querySelector("#ID").value;
-  let formData = {fname, lname, email, gender, id:ID};
+  let formData = {fname, lname, email, gender, ID};
 
   if(confirm("Are you sure you want to update this user?")){
       fetch(`https://backendactivity-1.onrender.com/api/users`,{
@@ -148,3 +148,4 @@ update.addEventListener(`click`,()=>{
   } 
 
 })
+

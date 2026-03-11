@@ -133,7 +133,7 @@ update.addEventListener('click', () => {
     if(confirm("Are you sure you want to update this user?")) {
         fetch(`https://backendactivity-1.onrender.com/api/users/${ID}`, {
             method: 'PUT',
-            body: JSON.stringify({ fname, lname, email, gender, ID }),
+            body: JSON.stringify({ fname, lname, email, gender, id:ID }),
             headers: { "Content-Type": "application/json" },
         })
         .then(response => response.json())
@@ -144,6 +144,7 @@ update.addEventListener('click', () => {
         .catch(error => console.log(error));
     }
 });
+
 
 
 

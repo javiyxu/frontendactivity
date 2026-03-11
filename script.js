@@ -124,29 +124,28 @@ function searchMember(id){
     console.log(error)
   })
 }
+update.addEventListener('click', () => {
+    let fname = document.querySelector("#fname").value;
+    let lname = document.querySelector("#lname").value;
+    let email = document.querySelector("#email").value;
+    let gender = document.querySelector("#gender").value;
+    let ID = document.querySelector("#ID").value;
 
-update.addEventListener(`click`,()=>{
-  let fname = document.querySelector("#fname").value;
-  let lname = document.querySelector("#lname").value;
-  let email = document.querySelector("#email").value;
-  let gender = document.querySelector("#gender").value;
-  let ID = document.querySelector("#ID").value;
-  let formData = {fname, lname, email, gender, id:ID};
+    if(confirm("Are you sure you want to update this user?")) {
+        fetch(`https://backendactivity-1.onrender.com/api/users/${ID}`, {
+            method: 'PUT',
+            body: JSON.stringify({ fname, lname, email, gender, id }),
+            headers: { "Content-Type": "application/json" },
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert("User Updated Successfully");
+            location.reload();
+        })
+        .catch(error => console.log(error));
+    }
+});
 
-  if(confirm("Are you sure you want to update this user?")){
-      fetch(`https://backendactivity-1.onrender.com/api/users`,{
-        method: 'PUT',
-        body: JSON.stringify(formData),
-        headers:{
-          "Content-Type":"application/json"
-        },
-      }).catch((error)=>{
-        console.log(error);
-      })
-      alert("User Updated Successfully");
-      location.reload();
-  } 
 
-})
 
 
